@@ -7,14 +7,10 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Category;
 
-class PostController extends Controller
+class CategoryController extends Controller
 {
-    public function index(Post $post)
-    {
-        //$test = $post->orderBy('updated_at', 'DESC')->limit(2)->toSql();
-        //dd($test); //DB確認用
-        
-        return view('posts.index')->with(['posts' => $post->getPaginateByLimit(5)]);
+    public function index(Category $category){
+        return view('categories.index')->with(['posts' => $category->getByCategory()]);
     }
     
     public function show(Post $post){
